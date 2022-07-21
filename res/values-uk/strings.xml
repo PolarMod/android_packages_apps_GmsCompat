@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Рівень сумісностиі сервісов Google </string>
+    <string name="app_name">Рівень сумісності сервісов Google </string>
     <string name="activity_name">Ізольованний Google Play</string>
-    <string name="reroute_location_requests_to_os_apis">Перенапрвити зароси місцезнаходження до ОС</string>
+    <string name="reroute_location_requests_to_os_apis">Перенаправити запроси місцезнаходження до ОС</string>
     <string name="missing_location_permission">Потрібні дозволи місцезнаходження щоби виконати дію: “%s“.</string>
     <string name="open_app_info">Відкрити інформацію про застосунок</string>
     <string name="open_settings">Відкрити налаштування</string>
@@ -11,8 +11,8 @@
     <string name="play_services">Сервіси Google Play</string>
     <string name="play_store">Play маркет</string>
 <!--    <string name="google_settings">Google services &amp; preferences</string>-->
-    <string name="google_settings">Нлаштування Google</string>
-    <string name="component_system_settings">%s app info</string>
+    <string name="google_settings">Налаштування Google</string>
+    <string name="component_system_settings">Інформація про застосунок %s</string>
     <string name="gms_network_location_opt_in">Сервіси місцезнаходження Google</string>
     <string name="no_gms_network_location">
 "Сервіси міцезнаходження Google вимкнуто. Натисніть “%1$s“ щоби дізнатися більше.
@@ -32,7 +32,7 @@
 "Запроси місцезнаходження перенапрвляются до ОС, але сервіси Google Play все ще мають доступ до місцезнаходження."
     </string>
     <string name="play_services_no_location_permission">
-"Дозвол Мысцезнаходження Google Play сервісів повнине бути всатновлен до “%s“, та “Викорстовувати точне місцезнаходження“ довжно бути увімкнено.";
+"Дозвол Місцезнаходження Google Play сервісів повнин бути встановлен до “%s“, та “Викорстовувати точне місцезнаходження“ довжно бути увімкнено.";
     </string>
     <string name="play_services_no_ble_location">
 "Сервіс міцезнаходження потребує доступ до дозволу “Пристрої поблизу“."
@@ -53,17 +53,17 @@
     <string name="play_store_missing_obb_permission_notif">Щоби встановити, Play маркету потрбен доступ до текі Android/obb</string>
 
     <string name="missing_permission_nearby_exposurenotifications">
-"Google Play сервісам потрібен дозвіл “Пристроі поблизу“ щоби увімкнути повідомленя про ризик зараження COVID-19"
+"Google Play сервісам потрібен дозвіл “Пристрої поблизу“ щоби увімкнути повідомленя про ризик зараження COVID-19"
     </string>
 
     <string name="missing_permission_nearby_NearbyShare">
-"Google Playe сервісам потрібен дозвіл “Пристрої поблизу“ щоби увімкнути Nearby Share"
+"Google Play сервісам потрібен дозвіл “Пристрої поблизу“ щоби увімкнути Nearby Share"
     </string>
 
-    <string name="missing_play_games_app">Ця гра потребує Goog Play Ігри</string>
+    <string name="missing_play_games_app">Ця гра потребує Google Play Ігри</string>
     <string name="install">Встановити</string>
 
-    <string name="notif_channel_bg_activity_start">Запрос щоби показати екрат</string>
+    <string name="notif_channel_bg_activity_start">Запрос щоби показати екран</string>
     <string name="notif_bg_activity_start">%s хоче показати екран. Натисніть щоб дозволити</string>
 
     <string name="notif_missing_nearby_devices_perm_generic">%s потребує дозвіл “Пристрої полбизу“</string>

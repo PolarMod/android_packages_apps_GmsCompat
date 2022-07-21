@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Рівень сумісностиі сервісов Google </string>
+    <string name="activity_name">Ізольованний Google Play</string>
+    <string name="reroute_location_requests_to_os_apis">Перенапрвити зароси місцезнаходження до ОС</string>
+    <string name="missing_location_permission">Потрібні дозволи місцезнаходження щоби виконати дію: “%s“.</string>
+    <string name="open_app_info">Відкрити інформацію про застосунок</string>
+    <string name="open_settings">Відкрити налаштування</string>
+    <string name="persistent_fg_service_notif">Ізольвані сервіси Google Play працюють</string>
+
+    <string name="usage_guide">Інструкція по використанню</string>
+    <string name="play_services">Сервіси Google Play</string>
+    <string name="play_store">Play маркет</string>
+<!--    <string name="google_settings">Google services &amp; preferences</string>-->
+    <string name="google_settings">Нлаштування Google</string>
+    <string name="component_system_settings">%s app info</string>
+    <string name="gms_network_location_opt_in">Сервіси місцезнаходження Google</string>
+    <string name="no_gms_network_location">
+"Сервіси міцезнаходження Google вимкнуто. Натисніть “%1$s“ щоби дізнатися більше.
+Якщо ви вирішили залишити сервіси місцезнаходження Google вимкнутими, ви можете увімкнути “%2$s“ щоби покращити сумісність застосунків."
+    </string>
+    <string name="revoke_location_permission">Відкликати дозвіли місцезнаходження у сервісів Google Play.</string>
+
+    <string name="play_services_settings">Інформація про застосунок сервісів Google Play</string>
+    <string name="play_store_settings">Інформація про застосунок Play маркета</string>
+
+    <string name="potential_issues">Ймовірні проблеми</string>
+
+    <string name="geolocation">Місцезнаходження</string>
+    <string name="location_access_is_off_for_all_apps">Доступ до місцезнаходження вимкнуто для усіх застосунків.</string>
+    <string name="location_settings">Налаштування місцезнаходження</string>
+    <string name="location_redirection_extra_permissions">
+"Запроси місцезнаходження перенапрвляются до ОС, але сервіси Google Play все ще мають доступ до місцезнаходження."
+    </string>
+    <string name="play_services_no_location_permission">
+"Дозвол Мысцезнаходження Google Play сервісів повнине бути всатновлен до “%s“, та “Викорстовувати точне місцезнаходження“ довжно бути увімкнено.";
+    </string>
+    <string name="play_services_no_ble_location">
+"Сервіс міцезнаходження потребує доступ до дозволу “Пристрої поблизу“."
+    </string>
+    <string name="always_on_scanning_settings">Налаштування постійного сканування.</string>
+    <string name="always_on_wifi_scanning_disabled">Дозвол постійного сканування Wi-Fi вимкнено.</string>
+    <string name="always_on_bluetooth_scanning_disabled">Дозвол постійного сканування Bluetooth вимкнено.</string>
+
+    <string name="push_notifications">Push-повідомлення</string>
+    <string name="play_services_no_battery_exemption">
+"Коли пристрій знаходиться у режимі очікування, push-полвідомлення будуть затримані щоби продовжити час праці від аккумулятора.
+Щоби прискорити їх доставку, встановить “Аккумулятор“ у “Без обмежени“ у налаштуваннях застосунку Google Play сервісів."
+    </string>
+
+    <string name="play_store_pending_user_action_notif">Потрібна дія у Play маркеті</string>
+    <string name="missing_permission">Не вистачає дозволів</string>
+    <string name="missing_app">Не вистачає затосунку</string>
+    <string name="play_store_missing_obb_permission_notif">Щоби встановити, Play маркету потрбен доступ до текі Android/obb</string>
+
+    <string name="missing_permission_nearby_exposurenotifications">
+"Google Play сервісам потрібен дозвіл “Пристроі поблизу“ щоби увімкнути повідомленя про ризик зараження COVID-19"
+    </string>
+
+    <string name="missing_permission_nearby_NearbyShare">
+"Google Playe сервісам потрібен дозвіл “Пристрої поблизу“ щоби увімкнути Nearby Share"
+    </string>
+
+    <string name="missing_play_games_app">Ця гра потребує Goog Play Ігри</string>
+    <string name="install">Встановити</string>
+
+    <string name="notif_channel_bg_activity_start">Запрос щоби показати екрат</string>
+    <string name="notif_bg_activity_start">%s хоче показати екран. Натисніть щоб дозволити</string>
+
+    <string name="notif_missing_nearby_devices_perm_generic">%s потребує дозвіл “Пристрої полбизу“</string>
+</resources>

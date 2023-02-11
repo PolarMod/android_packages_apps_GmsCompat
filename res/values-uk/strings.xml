@@ -67,4 +67,7 @@
     <string name="notif_bg_activity_start">%s хоче показати екран. Натисніть щоб дозволити</string>
 
     <string name="notif_missing_nearby_devices_perm_generic">%s потребує дозвіл “Пристрої полбизу“</string>
+    
+    <string name="notif_gms_crash_title">Помилка в роботі ізольованних сервісів Google Play</string>
+    <string name="notif_gms_crash_text">Натисніть, щоб побачити деталі</string>
 </resources>

@@ -67,4 +67,7 @@
     <string name="notif_bg_activity_start">%s хочет показать экран. Нажмите, чтоб разрешить</string>
 
     <string name="notif_missing_nearby_devices_perm_generic">%s нужно разрешение “Устройства поблизости“</string>
+
+    <string name="notif_gms_crash_title">Ошибка в работе изолированных сервисов Google Play</string>
+    <string name="notif_gms_crash_text">Нажмите, чтобы увидеть детали</string>
 </resources>

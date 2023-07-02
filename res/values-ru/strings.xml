@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">Уровень совместимости сервисов Google Play</string>
+    <string name="activity_name">Изолированный Google Play</string>
+    <string name="reroute_location_requests_to_os_apis">Перенапрвить запросы местоположения к ОС</string>
+    <string name="missing_location_permission">Для выполения действия “%s“ требуется доступ к местоположению.</string>
+    <string name="open_app_info">Открыть информацию о приложении</string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="persistent_fg_service_notif">Изоляция Google Play работает</string>
+
+    <string name="usage_guide">Инструкция по эксплуатации</string>
+    <string name="play_services">Сервисы Google Play</string>
+    <string name="play_store">Play-маркет</string>
+    <!--    <string name="google_settings">Google services &amp; preferences</string>-->
+    <string name="google_settings">Настройки Google</string>
+    <string name="component_system_settings">Информация о приложении %s</string>
+    <string name="gms_network_location_opt_in">Точность местоположения сервисов Google</string>
+    <string name="no_gms_network_location">
+        "Сервисы местоположения Google отключены. Нажмите “%1$s“, чтобы узнать больше.
+        Если вы хотите оставить местоположение отключенным, вы может включить “%2$s“ для улчшения совместимости с приложениями."
+    </string>
+    <string name="revoke_location_permission">Отозвать доступ к местоположению у сервисов Google Play.</string>
+
+    <string name="play_services_settings">Информация о приложении сервисов Google Play</string>
+    <string name="play_store_settings">Информация о приложении Play маркета</string>
+
+    <string name="potential_issues">Вероятные проблем</string>
+
+    <string name="geolocation">Местоположение</string>
+    <string name="location_access_is_off_for_all_apps">Доступ к местоположению выключен для всех приложений.</string>
+    <string name="location_settings">Настройки местоположения</string>
+    <string name="location_redirection_extra_permissions">
+        "Запросы местоположения перенаправляются к ОС, но сервисов Google Play все еще есть доступ к местоположению."
+    </string>
+    <string name="play_services_no_location_permission">
+        "Google Play сервисам необходим доступ к местоположению  для “%s“, и “Использование точного местоположения“ должно быть включено."
+    </string>
+    <string name="play_services_no_ble_location">
+        "Сервис местоположения использует Bluetooth сканирование и требует разрешение “Устройства поблизости“."
+    </string>
+    <string name="always_on_scanning_settings">Настройки фонового сканирования</string>
+    <string name="always_on_wifi_scanning_disabled">Фонвое сканирование сетей Wi-Fi выключено.</string>
+    <string name="always_on_bluetooth_scanning_disabled">Фоновое сканировние устройств Bluetooth выключено.</string>
+
+    <string name="push_notifications">Push-уведомления</string>
+    <string name="play_services_no_battery_exemption">
+        "В режиме ожидания push-уведомления будут задержаны для оптимизация использования аккумлятора.
+        Чтобы получать их быстрее установите "Использование баттареи" в "Неограничено" в настройках приложения сервисов Google Play."
+    </string>
+
+    <string name="play_store_pending_user_action_notif">Требуется действие в Play-маркете</string>
+    <string name="missing_permission">Отсутсвует разрешение</string>
+    <string name="missing_app">Отсутсвует приложение</string>
+    <string name="play_store_missing_obb_permission_notif">Чтобы установить это приложение, Play-маркету требуется разрешение для доступа к папке Android/obb</string>
+
+    <string name="missing_permission_nearby_exposurenotifications">
+        "Google Play сервисам требуется разрешение “Устройства поблизости“ для того, чтобы включить предупреждения о риске заражения."
+    </string>
+
+    <string name="missing_permission_nearby_NearbyShare">
+        "Google Play сервисам необходимо разрешение “Устройства поблизости“ для включения функции Nearby Share"
+    </string>
+
+    <string name="missing_play_games_app">Этой игре нужны Google Play игры</string>
+    <string name="install">Установить</string>
+
+    <string name="notif_channel_bg_activity_start">Запрос на показ экрана</string>
+    <string name="notif_bg_activity_start">%s хочет показать экран. Нажмите, чтоб разрешить</string>
+
+    <string name="notif_missing_nearby_devices_perm_generic">%s нужно разрешение “Устройства поблизости“</string>
+
+    <string name="notif_gms_crash_title">Ошибка в работе изолированных сервисов Google Play</string>
+    <string name="notif_gms_crash_text">Нажмите, чтобы увидеть детали</string>
+
+    <string name="notif_gmscore_power_exemption">
+        "Push-уведомления будут задержаны из-за отсутствия разрешения на работу в фоне у сервисов Google Play. Нажмите, чтобы решить."
+    </string>
+    <string name="dont_show_again">Больше не показывать</string>
+
+    <string name="missing_speech_services">Этому приложению нужны сервисы синтеза речи</string>
+
+    <string name="notif_contacts_sync_prompt">
+        "Чтобы синхронизировать контакты, Google Play сервисам нужно разрешение Контакты. Нажмите, чтобы настроить"
+    </string>
+
+    <string name="menu_item_configure_play_store_updates">Настроить обновления через Play-маркет</string>
+    <string name="msg_allow_updates_to_unknown_versions_by_play_store">
+        "Выберите компоненты Google Play сервисов, которым разрешено обновляться через Play-маркет.
+
+        Внимание:
+        Обновления до неизвестных версий может привести к ошибкам в работе сервисов Google Play."
+    </string>
+
+    <string name="notif_screen_capture_is_running">Запись экрана работает</string>
+</resources>

@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">Рівень сумісності сервисів Google Play</string>
+    <string name="activity_name">Ізольований Google Play</string>
+    <string name="reroute_location_requests_to_os_apis">Перенаправити запити про місцезнаходження до ОС</string>
+    <string name="missing_location_permission">Дозвіл місцезнаходження повинен бути встановлений в “%s“.</string>
+    <string name="open_app_info">Відкрити інформацію про застосунок</string>
+    <string name="open_settings">Відкрити налаштування</string>
+    <string name="persistent_fg_service_notif">Ізольовані Google Play працюють</string>
+
+    <string name="usage_guide">Інструкція з використання</string>
+    <string name="play_services">Сервіси Google Play</string>
+    <string name="play_store">Play-маркет</string>
+    <!--    <string name="google_settings">Google services &amp; preferences</string>-->
+    <string name="google_settings">Налаштування Google</string>
+    <string name="component_system_settings">Інформація про %s</string>
+    <string name="gms_network_location_opt_in">Точність міцезнаходження Google</string>
+    <string name="no_gms_network_location">
+        "Сервіс місцезнаходження Google вимкнено. Натисніть “%1$s“, щоби дізнатися більше.
+        Якщо ви хочете залишити цю опцію вимкнутой, ви можете увімкнути “%2$s“, аби підвищити точність."
+    </string>
+    <string name="revoke_location_permission">Вимкнути доступ Play-сервісів до місцезнаходження.</string>
+
+    <string name="play_services_settings">Інформація про сервіси Google Play</string>
+    <string name="play_store_settings">Інформація про Play-маркет</string>
+
+    <string name="potential_issues">Потенційні проблеми</string>
+
+    <string name="geolocation">Місцезнаходження</string>
+    <string name="location_access_is_off_for_all_apps">Доступ то місцезнаходження вимкнуто для усіх застосунків.</string>
+    <string name="location_settings">Налаштування місцезнаходження</string>
+    <string name="location_redirection_extra_permissions">
+        "Запити про місцезнаходження перенапрвлюються до ОС, але Play-сервіси все ще мають дозвіл отримувати місцезнаходження."
+    </string>
+    <string name="play_services_no_location_permission">
+        "Google Play сервіси потребують, щоби дозвіл місцезнаходження було встановлено в “%s“, увімкніть “Використовувати точне місцезнаходження“."
+    </string>
+    <string name="play_services_no_ble_location">
+        "Місцезнаходження за допомогою сканування Bluetooth потребує дозволу “Пристрої поблизу“."
+    </string>
+    <string name="always_on_scanning_settings">Налаштування сканування у тлі</string>
+    <string name="always_on_wifi_scanning_disabled">Сканування Wi-Fi у тлі вимкнено</string>
+    <string name="always_on_bluetooth_scanning_disabled">Сканування Bluetooth у тлі вимкнено.</string>
+
+    <string name="push_notifications">Push-сповіщення</string>
+    <string name="play_services_no_battery_exemption">
+        "Коли пристрій знаходиться в режимі очікування, push-сповіщення буде затримано, щоби подовшити час праці від баттареї.
+        Щоби отримувати їх швидше, встановити “Використання заряд“ в “Необмежено“ у інформації про Google Play сервіси."
+    </string>
+
+    <string name="pending_play_store_update_notif_title">Play Store бажає оновити %1$s</string>
+    <string name="pending_play_store_update_notif_text">Рекомендовано дозволити це. Натисніть, щоб продовжити</string>
+    <string name="play_store_pending_user_action_notif">Потрібна дія в Play-маркеті</string>
+    <string name="missing_permission">Не вистачає дозволів</string>
+    <string name="missing_optional_permission">Не вистачає опціональних дозволів</string>
+    <string name="missing_app">Не вистачає застосунку</string>
+    <string name="play_store_missing_obb_permission_notif">Щоби встановити цей застосунок Play-маркет потребує доступу до теки Android/obb</string>
+
+    <string name="missing_permission_nearby_exposurenotifications">
+        "Google Play сервіси потребують дозвіл “Пристрої поблизу“, щоби увімкнути Exposure Notifications"
+    </string>
+
+    <string name="missing_permission_nearby_NearbyShare">
+        "Google Play сервіси потребують дозвіл “Пристрої поблизу“, щоби увімкнути Nearby Share"
+    </string>
+
+    <string name="missing_play_games_app">Ця гра потребує Google Play ігор</string>
+    <string name="install">Встановити</string>
+
+    <string name="notif_channel_bg_activity_start">Запит на демонстрацію екрану</string>
+    <string name="notif_bg_activity_start">%s бажає показати екрани. Натисніть, щоби дозволити</string>
+
+    <string name="notif_missing_nearby_devices_perm_generic">%s потребує дозволу “Пристрої поблизу“ </string>
+
+    <string name="notif_gms_crash_title">Помилка в ізольованих сервісах Google Play</string>
+    <string name="notif_gms_crash_text">Натисніть, щоби отримати деталі</string>
+    <string name="notif_gms_crash_report">Відправити звіт</string>
+
+    <string name="notif_gmscore_power_exemption">
+        "Push-сповіщення буде затримано через брак дозволу праці у тлі Google Play сервісам. Натисніть щоби вирішити."
+    </string>
+    <string name="dont_show_again">Не показувати знову</string>
+
+    <string name="missing_speech_services">Цей застосунок потребує сервісів синтезу мови</string>
+
+    <string name="notif_contacts_sync_prompt">
+        "Щоби синхронізувати контакти Google Play сервісам потрібен доступ до контактів. Натисніть, щоб налаштувати"
+    </string>
+
+    <string name="menu_item_configure_play_store_updates">Налаштувати оновлення через Play-маркет</string>
+    <string name="msg_allow_updates_to_unknown_versions_by_play_store">
+        "Оберіть компоненти Google Play, яки дозволено оновлювати через Play Store.
+
+        Увага:
+        Оновлення до невідомих версій може призвести до помилок в праці сервісів Google Play."
+    </string>
+
+    <string name="notif_screen_capture_is_running">Запис екрану працює</string>
+</resources>

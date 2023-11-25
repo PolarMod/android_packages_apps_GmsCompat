@@ -2,6 +2,7 @@
     <string name="app_name">Google Play Services compatability layer</string>
     <string name="activity_name">Sandboxed Google Play</string>
     <string name="reroute_location_requests_to_os_apis">Reroute location requests to the OS</string>
+    <string name="missing_location_permission">Location permission needs to be set to “%s”.</string>
     <string name="open_app_info">Open app info</string>
     <string name="open_settings">Open settings</string>
     <string name="persistent_fg_service_notif">Sandboxed Google Play is running</string>
@@ -66,8 +67,7 @@ To receive them quicker, set “Battery usage” to “Unrestricted” in Play s
 "Play services needs the “Nearby devices“ permission to enable Nearby Share"
     </string>
 
-    <string name="notif_ch_missing_play_games_app">Missing Play Games app</string>
-    <string name="missing_play_games_app">%1$s needs the Play Games app</string>
+    <string name="missing_play_games_app">This game needs the Play Games app</string>
     <string name="install">Install</string>
 
     <string name="notif_channel_bg_activity_start">Request to show a screen</string>
@@ -101,6 +101,4 @@ Update to an unknown version may cause crashes and errors in sandboxed Google Pl
     </string>
 
     <string name="notif_screen_capture_is_running">Screen capture is running</string>
-
-    <string name="notif_GmsCore_missing_nearby_devices_perm_generic">%1$s requires Play services to have the “Nearby devices” permission</string>
 </resources>

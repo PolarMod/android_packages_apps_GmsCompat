@@ -9,7 +9,6 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.location.LocationManager
 import android.net.Uri
-import android.os.Build.IS_DEBUGGABLE
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
@@ -74,10 +73,13 @@ class MainFragment : PreferenceFragmentCompat() {
             SwitchPreference(ctx).apply {
                 title = getString(R.string.reroute_location_requests_to_os_apis)
                 isSingleLineTitle = false
-                isChecked = BinderDefs.isEnabled(BinderDefGroup.LOCATION)
+                isChecked = Redirections.isEnabled(Redirections.ID_GoogleLocationManagerService)
                 setOnPreferenceChangeListener { _, value ->
                     val redirectionEnabled = value as Boolean
-                    BinderDefs.setEnabled(BinderDefGroup.LOCATION, redirectionEnabled)
+                    Redirections.setState(
+                        Redirections.ID_GoogleLocationManagerService,
+                        redirectionEnabled
+                    )
 
                     var msg: String? = null
                     if (redirectionEnabled) {
@@ -181,7 +183,12 @@ class MainFragment : PreferenceFragmentCompat() {
         var addAlwaysOnScanningSettingsButton = false
         var addSelfSettingsButton = false
 
-        if (BinderDefs.isEnabled(BinderDefGroup.LOCATION)) {
+        if (Redirections.isEnabled(Redirections.ID_GoogleLocationManagerService)) {
+            if (ctx.checkSelfPermission(permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                sb.separator()
+                sb.append(getString(R.string.missing_location_permission, ctx.packageManager.backgroundPermissionOptionLabel))
+                addSelfSettingsButton = true
+            }
             if (psHasAnyLocationPerm) {
                 sb.separator()
                 sb.resString(R.string.location_redirection_extra_permissions)
@@ -394,5 +401,8 @@ private fun intToBool(v: Int) =
     if (v == 1) {
         true
     } else {
+        if (Const.DEV) {
+            require(v == 0)
+        }
         false
     }

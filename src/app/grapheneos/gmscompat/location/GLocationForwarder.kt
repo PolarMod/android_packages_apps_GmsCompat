@@ -11,6 +11,7 @@ import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationResult
 
 abstract class GLocationForwarder {
+    lateinit var osLocationListener: OsLocationListener
     lateinit var listeners: Listeners
 
     abstract fun listenerKey(): Any
@@ -18,8 +19,11 @@ abstract class GLocationForwarder {
     abstract fun forwardLocations(ctx: Context, locations: List<Location>)
     abstract fun onLocationAvailabilityChanged(ctx: Context, la: LocationAvailability)
 
+    open fun prepareForRegistration() {}
+    open fun callbackAfterUnregistration() {}
+
     fun unregister() {
-        removeListener(listeners, listenerKey())
+        listeners.remove(osLocationListener.client, listenerKey())
     }
 }
 
@@ -40,7 +44,19 @@ class GlfPendingIntent(val pendingIntent: PendingIntent) : GLocationForwarder() 
     override fun listenerKey(): Any = pendingIntent
 }
 
-abstract class GlfBinder(val binder: IBinder) : GLocationForwarder() {
+abstract class GlfBinder(val binder: IBinder) : GLocationForwarder(), IBinder.DeathRecipient {
+    override fun prepareForRegistration() {
+        binder.linkToDeath(this, 0)
+    }
+
+    override fun binderDied() {
+        unregister()
+    }
+
+    override fun callbackAfterUnregistration() {
+        binder.unlinkToDeath(this, 0)
+    }
+
     override fun listenerKey(): Any = binder
 }
 
@@ -57,7 +73,7 @@ class GlfLocationCallback(val callback: ILocationCallback) : GlfBinder(callback.
 
 class GlfLocationListener(val listener: ILocationListener) : GlfBinder(listener.asBinder()) {
     override fun forwardLocations(ctx: Context, locations: List<Location>) {
-        // same behavior as GmsCore
+        // same behavior as GMS
         locations.forEach {
             listener.onLocationChanged(it)
         }

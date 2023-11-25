@@ -1,39 +1,21 @@
 package app.grapheneos.gmscompat
 
 import android.app.AppOpsManager
-import android.app.Application
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import app.grapheneos.gmscompat.Const.DEV
 import app.grapheneos.gmscompat.Const.ENABLE_LOGGING
-import com.android.internal.gmscompat.GmsCompatApp
 import com.android.internal.gmscompat.GmsInfo
 import java.lang.reflect.Modifier
 import java.util.UUID
 
 fun mainThread() {
-    if (DEV) {
-        check(Thread.currentThread() === App.mainThread())
-    }
-}
-
-private fun isMainProcess() = Application.getProcessName() == GmsCompatApp.PKG_NAME
-
-fun mainProcess() {
-    if (DEV) {
-        check(isMainProcess())
-    }
-}
-
-fun notMainProcess() {
-    if (DEV) {
-        check(!isMainProcess())
-    }
+    check(Thread.currentThread() === App.mainThread())
 }
 
 fun logd() {
@@ -142,6 +124,17 @@ fun freshActivity(intent: Intent): Intent {
     // otherwise existing instance that is in unknown state could be shown
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
     return intent
+}
+
+fun getApplicationLabel(ctx: Context, pkg: String): CharSequence {
+    val pm = ctx.packageManager
+    return pm.getApplicationLabel(pm.getApplicationInfo(pkg, 0))
+}
+
+fun verifyCallerPkg(providedPkgName: String) {
+    val ctx = App.ctx()
+    val pm = ctx.packageManager
+    check(pm.getApplicationInfo(providedPkgName, 0).uid == android.os.Binder.getCallingUid())
 }
 
 const val APP_INFO_ITEM_PERMISSIONS = "permission_settings"

@@ -10,6 +10,7 @@ import android.content.pm.PackageManager
 import android.database.IContentObserver
 import android.net.Uri
 import android.os.Binder
+import android.os.BinderDef
 import android.os.Bundle
 import android.os.DeadObjectException
 import android.os.Handler
@@ -99,7 +100,6 @@ object BinderGms2Gca : IGms2Gca.Stub() {
 
             when (bp?.processName) {
                 GmsInfo.PACKAGE_PLAY_STORE -> {
-                    dismissPlayStorePendingUserActionNotification()
                     Notifications.cancel(Notifications.ID_PLAY_STORE_MISSING_OBB_PERMISSION)
                 }
                 GmsHooks.PERSISTENT_GmsCore_PROCESS -> {
@@ -193,10 +193,25 @@ object BinderGms2Gca : IGms2Gca.Stub() {
         return connect(PACKAGE_GMS_CORE, processName, iGca2Gms)
     }
 
-    override fun showPlayStorePendingUserActionNotification(pkgName: String?) {
+    const val MAIN_PLAY_STORE_PROCESS: String = PACKAGE_PLAY_STORE
+    val playStorePendingUserActionIntents = ArrayDeque<Intent>()
+
+    override fun onPlayStorePendingUserAction(actionIntent: Intent, pkgName: String?) {
+        val mainProcess = getBoundProcessByName(MAIN_PLAY_STORE_PROCESS)
+        if (mainProcess != null) {
+            try {
+                if (mainProcess.startActivityIfVisible(actionIntent)) {
+                    return
+                }
+            } catch (e: RemoteException) {
+                // main process can racily die
+                e.printStackTrace()
+            }
+        }
+
         val ctx = App.ctx()
-        val intent = ctx.packageManager.getLaunchIntentForPackage(PACKAGE_PLAY_STORE)
-        val pendingIntent = PendingIntent.getActivity(ctx, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val launchIntent = ctx.packageManager.getLaunchIntentForPackage(PACKAGE_PLAY_STORE)
+        val contentIntent = PendingIntent.getActivity(ctx, 0, launchIntent, PendingIntent.FLAG_IMMUTABLE)
 
         var text = R.string.pending_play_store_update_notif_text
         val title = when (pkgName) {
@@ -214,14 +229,28 @@ object BinderGms2Gca : IGms2Gca.Stub() {
             if (text != 0) {
                 setContentText(text)
             }
-            setContentIntent(pendingIntent)
+            setContentIntent(contentIntent)
             setAutoCancel(true)
             show(Notifications.ID_PLAY_STORE_PENDING_USER_ACTION)
         }
+
+        synchronized(playStorePendingUserActionIntents) {
+            playStorePendingUserActionIntents.addLast(actionIntent)
+        }
     }
 
-    override fun dismissPlayStorePendingUserActionNotification() {
-        Notifications.cancel(Notifications.ID_PLAY_STORE_PENDING_USER_ACTION)
+    override fun maybeGetPlayStorePendingUserActionIntent(): Intent? {
+        synchronized(playStorePendingUserActionIntents) {
+            if (playStorePendingUserActionIntents.size == 1) {
+                // intentionally inside a criticat section to prevent race with addLast() above
+                Notifications.cancel(Notifications.ID_PLAY_STORE_PENDING_USER_ACTION)
+            }
+            return playStorePendingUserActionIntents.removeLastOrNull()
+        }
+    }
+
+    override fun maybeGetBinderDef(callerPkg: String, processState: Int, ifaceName: String): BinderDef? {
+        return BinderDefs.maybeGetBinderDef(callerPkg, processState, ifaceName, true)
     }
 
     override fun showPlayStoreMissingObbPermissionNotification() {
@@ -243,7 +272,7 @@ object BinderGms2Gca : IGms2Gca.Stub() {
         val ctx = App.ctx()
         Notifications.builder(Notifications.CH_BACKGROUND_ACTIVITY_START)
                 .setSmallIcon(R.drawable.ic_configuration_required)
-                .setContentTitle(ctx.getString(R.string.notif_bg_activity_start, applicationLabel(ctx, callerPkg)))
+                .setContentTitle(ctx.getString(R.string.notif_bg_activity_start, getApplicationLabel(ctx, callerPkg)))
                 .setContentIntent(intent)
                 .setAutoCancel(true)
                 .show(Notifications.generateUniqueNotificationId())
@@ -409,11 +438,6 @@ object BinderGms2Gca : IGms2Gca.Stub() {
     private var prevUeNotifTimestamp = 0L
     private var prevConfigUpdateCheckTimestamp = 0L
 
-    private fun applicationLabel(ctx: Context, pkg: String): CharSequence {
-        val pm = ctx.packageManager
-        return pm.getApplicationLabel(pm.getApplicationInfo(pkg, PackageManager.ApplicationInfoFlags.of(0)))
-    }
-
     private val privSettings = PrivSettings()
 
     override fun privSettingsGetString(ns: String, key: String): String? {
@@ -444,7 +468,7 @@ object BinderGms2Gca : IGms2Gca.Stub() {
         }
     }
 
-  val missingPostNotifsNotifIds = ArrayMap<String, Int>()
+    val missingPostNotifsNotifIds = ArrayMap<String, Int>()
 
     override fun showMissingPostNotifsPermissionNotification(callerPkg: String) {
         val notifId = synchronized(missingPostNotifsNotifIds) {
@@ -461,7 +485,7 @@ object BinderGms2Gca : IGms2Gca.Stub() {
         }
 
         val text = ctx.getString(R.string.notif_missing_nofications_perm,
-                applicationLabel(ctx, callerPkg))
+                getApplicationLabel(ctx, callerPkg))
 
         Notifications.configurationRequired(
                 Notifications.CH_MISSING_PERMISSION,

@@ -70,6 +70,9 @@ finsky.kill_switch_phenotype_gservices_check set-string 0
 
 [[stubs]]
 
+[android.app.ActivityManager]
+addOnUidImportanceListener void
+
 [android.app.admin.DevicePolicyManager]
 isDeviceProvisioned true
 isDeviceProvisioningConfigApplied true
@@ -112,6 +115,7 @@ queryValidVerificationPackageNames emptyList
 
 [android.hardware.usb.UsbManager]
 getPorts emptyList
+grantPermission void
 
 [android.location.LocationManager]
 setExtraLocationControllerPackage void
@@ -179,7 +183,7 @@ getServiceState null
 [[versionMap]]
 # section name is gmscompat version, section contents are max supported versions of GmsCore and Play Store
 [1000]
-232499999 83639999
+233799999 83779999
 
 [[stubs_12.1]]
 
@@ -201,3 +205,8 @@ unregisterBluetoothConnectionCallback false
 [[force_default_flags]]
 [com.google.android.gms.fido]
 .+
+
+[[force_ComponentEnabledSettings]]
+[com.google.android.gms]
+# causes chain crashes on Pixel Tablet due to the missing Dock Manager app
+disable com.google.android.gms.homegraph.PersistentListenerService

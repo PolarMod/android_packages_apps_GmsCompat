@@ -7,12 +7,16 @@ import android.content.SharedPreferences;
 
 import com.android.internal.gmscompat.GmsCompatApp;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 public class App extends Application {
     private static Context ctx;
     private static Context deviceProtectedStorageContext;
     private static NotificationManager notificationManager;
     private static SharedPreferences preferences;
     private static Thread mainThread;
+    private static Executor bgExecutor;
 
     public void onCreate() {
         super.onCreate();
@@ -25,14 +29,13 @@ public class App extends Application {
         }
         ctx = componentContext.getApplicationContext();
         mainThread = Thread.currentThread();
+        bgExecutor = Executors.newSingleThreadExecutor();
 
         if (GmsCompatApp.PKG_NAME.equals(Application.getProcessName())) {
             // main process
             deviceProtectedStorageContext = ctx.createDeviceProtectedStorageContext();
             preferences = deviceProtectedStorageContext
                     .getSharedPreferences(MAIN_PROCESS_PREFS_FILE, MODE_PRIVATE);
-            Redirections.init(preferences);
-
             notificationManager = ctx.getSystemService(NotificationManager.class);
             Notifications.createNotificationChannels();
 
@@ -53,7 +56,6 @@ public class App extends Application {
     }
 
     public static SharedPreferences preferences() {
-        UtilsKt.mainProcess();
         return preferences;
     }
 
@@ -61,11 +63,15 @@ public class App extends Application {
         return mainThread;
     }
 
+    public static Executor bgExecutor() {
+        return bgExecutor;
+    }
+
     private static final String MAIN_PROCESS_PREFS_FILE = "prefs";
 
     public interface MainProcessPrefs {
-        String ENABLED_REDIRECTIONS = "enabled_redirections";
-        String INITED_REDIRECTIONS = "inited_redirections";
+        String LOCATION_REQUEST_REDIRECTION_ENABLED = "enabled_redirections"; // historical name
+
         String GmsCore_POWER_EXEMPTION_PROMPT_DISMISSED = "GmsCore_power_exemption_prompt_dismissed";
         String NOTIFICATION_DO_NOT_SHOW_AGAIN_PREFIX = "do_not_show_notification_";
 
